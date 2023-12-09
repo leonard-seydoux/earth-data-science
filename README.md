@@ -1,5 +1,7 @@
 # Earth data science 
 
+![](illustration.png)
+
 ## Description
 
 The class Earth data science is a master-level class of the institut de physique du globe de Paris. This course is a legacy of the course of the same name by [Antoine Lucas](http://dralucas.geophysx.org/). The lectures are taught by [Léonard Seydoux](https://sites.google.com/view/leonard-seydoux/accueil) and the practicals by [Antoine Lucas](http://dralucas.geophysx.org/), [Alexandre Fournier](https://www.ipgp.fr/~fournier/), [Éléonore Stutzmann](https://www.ipgp.fr/~stutz/) and [Léonard Seydoux](https://sites.google.com/view/leonard-seydoux/accueil). 
