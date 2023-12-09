@@ -14,7 +14,7 @@
     --color-olivine: #7aa585;
     --color-h1: var(--color-graphite);
     --color-h2: var(--color-graphite);
-    --color-footer: var(--color-terra);
+    --color-footer: #bbbbbb;
     --color-link: var(--color-magma);
     --color-math: var(--color-olivine);
     --font: Helvetica;
@@ -116,10 +116,6 @@ section {
     color: var(--color-graphite);
 }
 
-/* section.smaller div {
-    font-size: 90%;
-} */
-
 section div {
     display: inline;
     flex-grow: 1;
@@ -133,6 +129,7 @@ img {
     background-color: transparent;
     max-height: 550px;
 }
+
 
 .logo {
     background-image: url("https://s3.glicid.fr/nuts/workshop-banner.svg");
