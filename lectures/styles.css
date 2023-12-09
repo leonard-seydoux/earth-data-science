@@ -163,27 +163,23 @@ img {
 }
 
 section.titlepage {
-    /* text-align: left; */
+    text-align: left;
     color: var(--color-h1-titlepage);
     background-color: var(--color-titlepage-bg);
-    /* margin-left: 0px; */
-    /* margin-right: 200px; */
-    /* vertical-align: center; */
-    background-image: url("images/logo/ipgp.png");
+    background-image: url("images/logo/logo-ipgp.png");
     background-size: 1800px;
     background-position-x: 50%;
     background-position-y: 50%;
 }
 
-/* section.titlepage div {
+section.titlepage div {
     max-width: 80%;
     width: 80%;
     vertical-align: bottom;
-} */
+}
 
 section.titlepage h1 {
     color: var(--color-h1-titlepage);
-    /* width: 100%; */
 }
 
 section.titlepage h2 {
@@ -193,11 +189,6 @@ section.titlepage h2 {
     background-color: transparent;
 }
 
-section.titlepage p,
-section.titlepage a {
-    font-size: 18pt;
-    /* color: var(--color-h1-titlepage); */
-}
 
 section.titlepage footer {
     color: rgb(23, 13, 13);

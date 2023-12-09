@@ -6,16 +6,16 @@ math: katex
 
 <!-- _class: titlepage-->
 
-<!-- <div> -->
+<div>
 
 # Earth Data Science
 
 Lecture by Léonard Seydoux the master-level classes of the [institut de physique du globe de Paris](https://www.ipgp.fr) with contents inspired by the [scikit-learn](https://scikit-learn.org/stable/) Python library documentation and the [deep learning](https://www.deeplearningbook.org/) book of Ian Goodfellow.
 
-[<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -15px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
+[<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -15px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
 
 
-<!-- </div> -->
+</div>
 
 ---
 
@@ -60,7 +60,7 @@ Here, earth data analysis is about statistical inference, machine learning, and 
 
 What kind of problems can we solve with artificial intelligence?
 
-[<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -15px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
+[<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -15px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
 
 ---
 
@@ -473,7 +473,7 @@ How deep learning works? What is a neural network? How to train it, and what for
 
 <p style="color: white !important">
 
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
+<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
 
 `leonard.seydoux/machine-learning-courses`
 
@@ -637,7 +637,7 @@ We here see about learning, backpropagation, and gradient descent. Very briefly.
 
 <p style="color: white !important">
 
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
+<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
 
 `leonard.seydoux/machine-learning-courses`
 
@@ -908,7 +908,7 @@ OK, we know how to train a model, but how do we know if it is good? How do we kn
 
 <p style="color: white !important">
 
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
+<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
 
 `leonard.seydoux/machine-learning-courses`
 
@@ -1094,7 +1094,7 @@ What is the problem with fully connected networks? How can we improve them?
 
 <p style="color: white !important">
 
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
+<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
 
 `leonard.seydoux/machine-learning-courses`
 
@@ -1279,7 +1279,7 @@ The illustration of the previous concepts with examples from seismology. And the
 
 <p style="color: white !important">
 
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
+<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
 
 `leonard.seydoux/machine-learning-courses`
 
@@ -1406,7 +1406,7 @@ Fine tuning, data augmentation, and more.
 
 <p style="color: white !important">
 
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
+<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
 
 `leonard.seydoux/machine-learning-courses`
 
@@ -1538,7 +1538,7 @@ Now we can move to the notebooks!
 
 <p style="color: white !important">
 
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
+<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
 
 `leonard.seydoux/machine-learning-courses`
 
