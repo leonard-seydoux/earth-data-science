@@ -3,20 +3,22 @@
 @import 'default';
 
 :root {
-    --color-primary: rgb(169, 136, 112);
-    --color-secondary: rgb(229, 204, 184);
-    --color-h1: white;
-    --color-h1-titlepage: black;
-    --color-titlepage-bg: rgb(246, 243, 238);
-    --color-h2: black;
-    --color-h2-background: var(--color-titlepage-bg);
-    --color-strong: var(--color-primary);
-    --color-footer: rgb(162, 162, 162);
-    --color-link: rgb(207, 58, 3);
-    --color-mark: rgb(249, 232, 186);
-    --color-math: rgb(76, 169, 78);
+    --color-lava: #ef3b37;
+    --color-ocre: #f35639;
+    --color-magma: #da291c;
+    --color-rubis: #8a1538;
+    --color-sable: #f7f3ef;
+    --color-graphite: #48424d;
+    --color-terra: #dca67a;
+    --color-blueschist: #84bdde;
+    --color-olivine: #7aa585;
+    --color-h1: var(--color-graphite);
+    --color-h2: var(--color-graphite);
+    --color-footer: var(--color-terra);
+    --color-link: var(--color-magma);
+    --color-math: var(--color-olivine);
     --font: Helvetica;
-    --font-code: Cascadia Code;
+    --font-code: Cascadia Code; 
 }
 
 h1,
@@ -47,32 +49,18 @@ h2 {
     left: 0px;
     padding-top: 25px;
     padding-bottom: 25px;
-    background-color: var(--color-h2-background);
+    background-color: var(--color-sable);
     font-weight: normal;
     text-align: center;
 }
-
-
 
 h1 strong,
 h2 strong,
 h3 strong,
 h4 strong {
-    /* color: var(--color-strong); */
-    color: black;
+    color: inherit;
     font-weight: bold;
 }
-
-h2 em {
-    font-weight: 100;
-    font-style: normal;
-}
-
-mark {
-    background-color: var(--color-mark);
-}
-
-
 
 section::after,
 footer {
@@ -98,7 +86,7 @@ a {
 
 a:has(code){
     vertical-align: top;
-    color: grey;
+    color: var(--color-blueschist);
     text-decoration: none;
 }
 
@@ -116,34 +104,28 @@ a:has(code) > code{
     display: inline;
 }
 
-blockquote {
-    color: rgb(186, 186, 186);
-    border-left: 5px solid rgb(162, 162, 162);
-    padding-left: 20px;
-}
 
 section {
     padding: 60px;
-    padding-top: 100px;
-    background-color: white;
-    display: flex;
+    padding-top: 130px;
     flex-direction: row;
     flex-wrap: wrap;
     flex-grow: 1;
-    flex-basis: 40%;
     align-items: center;
-    gap: 50px;
+    gap: 30px;
+    color: var(--color-graphite);
 }
 
-section.smaller div {
+/* section.smaller div {
     font-size: 90%;
-}
+} */
 
 section div {
     display: inline;
     flex-grow: 1;
     flex-basis: 40%;
 }
+
 
 img {
     display: block;
@@ -163,23 +145,20 @@ img {
 }
 
 section.titlepage {
-    text-align: left;
-    color: var(--color-h1-titlepage);
-    background-color: var(--color-titlepage-bg);
+    background-color: var(--color-sable);
     background-image: url("images/logo/logo-ipgp.png");
     background-size: 1800px;
     background-position-x: 50%;
     background-position-y: 50%;
+    gap: 10px;
+    flex-direction:column;
 }
 
-section.titlepage div {
-    max-width: 80%;
-    width: 80%;
-    vertical-align: bottom;
-}
 
 section.titlepage h1 {
-    color: var(--color-h1-titlepage);
+    width: 80%;
+    padding-bottom: 30px;
+    margin: 0px;
 }
 
 section.titlepage h2 {
@@ -187,6 +166,15 @@ section.titlepage h2 {
     padding-left: 0px;
     color: white;
     background-color: transparent;
+}
+
+section.titlepage h3 {
+    width: 80%;
+    margin: 0px;
+}
+
+section.titlepage p {
+    width: 80%;
 }
 
 
@@ -209,15 +197,4 @@ code {
 
 table {
     font-size: 16pt;
-}
-
-blockquote {
-    color: var(--color-math);
-    border-left: None; 
-    padding: 0px; 
-    font-weight: 600;
-}
-
-blockquote .katex{
-    color: var(--color-math);
 }
