@@ -1,0 +1,18 @@
+# Font options
+font.family: Helvetica
+font.size: 10
+
+# Axes options
+axes.facecolor: "#ffffff55"
+axes.edgecolor: 0.5
+lines.linewidth: 1
+axes.labelcolor: 0.5
+axes.titlecolor: 0.5
+
+# Figure options
+figure.facecolor: "none"
+figure.figsize: 2, 2
+
+# Save figure options
+savefig.bbox: tight
+# savefig.transparent: True

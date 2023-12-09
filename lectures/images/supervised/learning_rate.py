@@ -3,111 +3,134 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Parameters
-plt.rcParams["figure.figsize"] = 2, 2
-plt.rcParams["font.family"] = "Helvetica"
-plt.rcParams["savefig.bbox"] = "tight"
-plt.rcParams["lines.linewidth"] = 1
+# The loss is ax parabola
+thetas = np.linspace(-1, 1, 100)
+theta_0 = 0.9
+loss = thetas**2
+d_loss = 2 * thetas
+loss_0 = theta_0**2
 
-
-# The loss is a parabola
-x = np.linspace(-1, 1, 100)
-y = x**2
-
-# Plot loss
-fig, ax = plt.subplots(1, 3, figsize=(7, 2))
+# Prepare figure
+fig, axes = plt.subplots(1, 3, figsize=(7, 2))
 
 # Plot loss
-theta = 0.9
-for a in ax:
-    a.plot(x, y, color="black")
-    a.set_xticks([])
-    a.set_yticks([])
-    a.axvline(theta, color="C1")
-    a.plot(theta, theta**2, color="C1", marker="o", markersize=5)
-    a.text(theta, -0.09, r"$\theta_0$", va="top", ha="center", color="C1")
-    a.set_xlabel(r"$\theta$")
+for ax in axes:
+    # Plot loss
+    ax.plot(thetas, loss, color="0.5")
 
-ax[0].set_ylabel(r"$\mathcal{L}(\theta)$")
+    # Format axes
+    ax.set_xticks([])
+    ax.set_yticks([])
+
+    # Mark theta_0
+    ax.vlines(theta_0, 0, loss_0, color="C1", linestyle="--")
+    ax.plot(theta_0, loss_0, color="C1", marker="o", markersize=5)
+    ax.text(theta_0, -0.09, r"$\theta_0$", va="top", ha="center", color="C1")
+    ax.set_xlabel(r"$\theta$")
+
+# Label only the first y-axis
+axes[0].set_ylabel(r"$\mathcal{L}(\theta)$")
 
 # Plot fast learning rate as bouncing ball
 learning_rate = 0.9
-derivative = 2 * x
-theta = 0.9
+theta = theta_0
 for _ in range(5):
-    theta_0 = theta
-    theta -= learning_rate * derivative[np.argmin(np.abs(x - theta))] + 0.1
-    sign = np.sign(theta - theta_0)
-    sign = "-" if sign < 0 else "+"
-    ax[0].annotate(
-        "",
-        xy=(theta_0, theta_0**2),
-        xytext=(theta, theta**2),
-        arrowprops=dict(
-            arrowstyle="<-",
-            color="C0",
-            connectionstyle=f"arc3,rad={sign}0.4",
-            shrinkA=5,
-            shrinkB=5,
-        ),
+    # Update theta
+    theta_index = np.abs(thetas - theta).argmin()
+    theta_new = theta - learning_rate * d_loss[theta_index] + 0.1
+
+    # Get sign of update
+    sign = "+" if np.sign(theta_new - theta) < 0 else "-"
+
+    # Annotate
+    arrowprops = dict(
+        arrowstyle="->",
+        color="C0",
+        connectionstyle=f"arc3,rad={sign}0.4",
+        shrinkA=5,
+        shrinkB=5,
     )
-    ax[0].plot(theta, theta**2, color="C0", marker="o", markersize=5)
+    axes[0].annotate(
+        "",
+        xy=(theta_new, theta_new**2),
+        xytext=(theta, theta**2),
+        arrowprops=arrowprops,
+    )
+
+    # Update theta
+    axes[0].plot(theta_new, theta_new**2, color="C0", marker="o", ms=5)
+
+    # Update theta
+    theta = theta_new
 
 # Plot slow learning rate as bouncing ball
-learning_rate = 0.05
-derivative = 2 * x
-theta = 0.9
+learning_rate = 0.07
+theta = theta_0
 for _ in range(4):
-    theta_0 = theta
-    theta -= learning_rate * derivative[np.argmin(np.abs(x - theta))]
-    sign = np.sign(theta - theta_0)
-    sign = "-" if sign < 0 else "+"
-    ax[1].annotate(
-        "",
-        xy=(theta_0, theta_0**2),
-        xytext=(theta, theta**2),
-        arrowprops=dict(
-            arrowstyle="<-",
-            color="C0",
-            connectionstyle=f"arc3,rad={sign}2.5",
-            shrinkA=4,
-            shrinkB=6,
-        ),
+    # Update theta
+    theta_index = np.abs(thetas - theta).argmin()
+    theta_new = theta - learning_rate * d_loss[theta_index]
+
+    # Get sign of update
+    sign = "+" if np.sign(theta_new - theta) < 0 else "-"
+
+    # Annotate
+    arrowprops = dict(
+        arrowstyle="->",
+        color="C0",
+        connectionstyle=f"arc3,rad={sign}3",
+        shrinkA=6,
+        shrinkB=7,
     )
-    ax[1].plot(theta, theta**2, color="C0", marker="o", markersize=5)
-
-# Plot good learning rate as bouncing ball
-learning_rate = 0.1
-derivative = 2 * x
-theta = 0.9
-for _ in range(4):
-    theta_0 = theta
-    theta -= learning_rate * derivative[np.argmin(np.abs(x - theta))] + 0.1
-    amp = np.abs(theta - theta_0)
-    sign = np.sign(theta - theta_0)
-    sign = "-" if sign < 0 else "+"
-    amp = f"{(8 - 15 * amp) / 3:.1f}"
-    print(amp)
-    ax[2].annotate(
+    axes[1].annotate(
         "",
-        xy=(theta_0, theta_0**2),
+        xy=(theta_new, theta_new**2),
         xytext=(theta, theta**2),
-        arrowprops=dict(
-            arrowstyle="<-",
-            color="C0",
-            connectionstyle=f"arc3,rad={sign}{amp}",
-            shrinkA=4,
-            shrinkB=6,
-        ),
+        arrowprops=arrowprops,
     )
-    ax[2].plot(theta, theta**2, color="C0", marker="o", markersize=5)
 
-ax[0].set_title("Fast learning rate")
-ax[1].set_title("Slow learning rate")
-ax[2].set_title("Good learning rate")
+    # Update theta
+    axes[1].plot(theta_new, theta_new**2, color="C0", marker="o", ms=5)
 
-ax[-1].set_xlabel(r"$\theta$")
-ax[-1].text(0.9, -0.09, r"$\theta_0$", va="top", ha="center", color="C1")
+    # Update theta
+    theta = theta_new
+
+# Plot perfect learning rate as bouncing ball
+learning_rate = 0.2
+theta = theta_0
+for _ in range(3):
+    # Update theta
+    theta_index = np.abs(thetas - theta).argmin()
+    theta_new = theta - learning_rate * d_loss[theta_index]
+
+    # Get sign of update
+    sign = "+" if np.sign(theta_new - theta) < 0 else "-"
+
+    # Annotate
+    arrowprops = dict(
+        arrowstyle="->",
+        color="C0",
+        connectionstyle=f"arc3,rad={sign}2.2",
+        shrinkA=8,
+        shrinkB=4,
+    )
+    axes[2].annotate(
+        "",
+        xy=(theta_new, theta_new**2),
+        xytext=(theta, theta**2),
+        arrowprops=arrowprops,
+    )
+
+    # Update theta
+    axes[2].plot(theta_new, theta_new**2, color="C0", marker="o", ms=5)
+
+    # Update theta
+    theta = theta_new
+
+# Titles
+axes[0].set_title("Too large")
+axes[1].set_title("Too small")
+axes[2].set_title("Perfect")
 
 # Save
 plt.savefig("learning_rate.svg", dpi=300, bbox_inches="tight", pad_inches=0.2)

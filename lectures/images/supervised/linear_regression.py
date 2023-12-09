@@ -189,6 +189,23 @@ def main():
     ax.set_aspect("equal")
     fig.savefig("linear_classification.svg")
 
+    # Classification
+    fig, ax = plt.subplots()
+    x = gaussian_blob(center=(0.6, 0.3), radius=0.15)
+    ax.plot(*x.T, ".", label="$y=0$")
+    x = gaussian_blob(center=(0.1, -0.1), radius=0.12)
+    ax.plot(*x.T, ".", label="$y=1$", c="lightblue")
+    ax.set_xlabel("$x_1$")
+    ax.set_ylabel("$x_2$")
+    ax.legend(fontsize="small")
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.set_xlim(-0.1, 1.1)
+    ax.set_ylim(-0.8, 0.7)
+    ax.axline((0, 0.5), slope=-1, color="C1")
+    ax.set_aspect("equal")
+    fig.savefig("linear_classification_math.svg")
+
 
 if __name__ == "__main__":
     main()
