@@ -6,7 +6,7 @@ math: katex
 
 <!-- _class: titlepage-->
 
-<div>
+<!-- <div> -->
 
 # Earth Data Science
 
@@ -15,7 +15,7 @@ Lecture by Léonard Seydoux the master-level classes of the [institut de physiqu
 [<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -15px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
 
 
-</div>
+<!-- </div> -->
 
 ---
 
@@ -23,16 +23,12 @@ Lecture by Léonard Seydoux the master-level classes of the [institut de physiqu
 
 ## Goals of this course
 
-<div style="max-width: 70%;">
-
-Here, earth data analysis is about statistical inference, machine learning, and deep learning. In particular, we will:
+### Learn about statistical inference, machine learning, and deep learning.
 
 1. Identify scientific problems in need for data science tools
 1. Define the problem and adequate analysis workflows
 1. Train on real examples
 1. Read AI-based papers with a critical eye
-
-</div>
 
 ---
 
@@ -52,7 +48,7 @@ Here, earth data analysis is about statistical inference, machine learning, and 
 
 <!-- _class: titlepage-->
 
-<div>
+<!-- <div> -->
 
 # 1. Introduction
 
@@ -190,7 +186,7 @@ An algorithm learns from experience $E$ with respect to a tasks $T$ and performa
 <img src="https://miro.medium.com/v2/resize:fit:1400/format:webp/1*PNhbaJRqS9w1kg2m7HE1bg.png" width=800px/>
 
 </div>
-<div style="flex-basis: 50%;">
+<div>
 
 __The data__ is a set of examples with 
 
