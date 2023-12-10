@@ -96,7 +96,7 @@ a:has(code) > code{
 
 .katex {
     color: var(--color-math);
-    font-size: 110%;
+    font-size: 115%;
 }
 
 .emoji {

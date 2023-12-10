@@ -8,6 +8,9 @@ axes.edgecolor: 0.5
 lines.linewidth: 1
 axes.labelcolor: 0.5
 axes.titlecolor: 0.5
+axes.titlesize: 10
+xtick.labelcolor: 0.5
+ytick.labelcolor: 0.5
 
 # Figure options
 figure.facecolor: "none"
