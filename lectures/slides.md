@@ -11,7 +11,7 @@ math: katex
 Lecture by Léonard Seydoux the master-level classes of the [institut de physique du globe de Paris](https://www.ipgp.fr) with contents inspired by the [scikit-learn](https://scikit-learn.org/stable/) Python library documentation and the [deep learning](https://www.deeplearningbook.org/) book of Ian Goodfellow.
 
 `Léonard Seydoux` `Antoine Lucas` `́Eléonore Stutzmann` 
-`Alexandre Fournier` `David Weissenbach.`
+`Alexandre Fournier` `David Weissenbach`
 
 [<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:10px; margin-right: -20px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
 
@@ -19,16 +19,18 @@ Lecture by Léonard Seydoux the master-level classes of the [institut de physiqu
 ---
 
 <!-- paginate: true -->
-<!-- _footer: Bergen et al. (2019) -->
 
-## Goal: learn about statistical inference, machine, and deep learning
+## Goal: learn about statistical inference and machine learning
 
-<div style="flex-basis: 50%;">
+<div style="flex-basis: 45%;">
 
-1. Identify problems in need for data science
-1. Define the problem and analysis workflow
-1. Train on real examples
-1. Read AI-based papers with a critical eye
+1. __Identify__ data-related scientific problems
+1. __Define__ the problem and design a solution
+1. __Learn__ from examples in the litterature
+1. __Critisize__ the litterature
+1. __Train__ on real geoscience problems 
+
+![width:240px](https://cdn.icon-icons.com/icons2/2699/PNG/512/jupyter_logo_icon_169453.png)
 
 </div>
 <div style="flex-basis: 40%;">
@@ -37,55 +39,78 @@ Lecture by Léonard Seydoux the master-level classes of the [institut de physiqu
 
 </div>
 
+<!-- _footer: Front over: Bergen et al. (2019) -->
+
 ---
+
+## Goal: keep up with the ongoing pace
+
+
+![width:800px](images/papers/mousavi2022papers.jpg)
+
+</div>
 
 <!-- _footer: Mousavi et al. (2022) -->
 
-## Goal: learn about statistical inference, machine, and deep learning
+---
 
-<div style="flex-basis: 50%;">
+## Planned learning curve of this class
 
-1. Identify problems in need for data science
-1. Define the problem and analysis workflow
-1. Train on real examples
-1. Read AI-based papers with a critical eye
+<div style="flex-basis: 35%;">
+
+__Lectures (8h)__
+Statistics and machine learning.
+
+__Notebooks (20h)__
+Solve Earth science problems.
+
+__Final hackathon (4h)__
+Task-solving challenge.
 
 </div>
-<div style="flex-basis: 43%;">
+<div style="flex-basis: 65%; margin-right: -47px;">
 
-![width:500px](images/papers/mousavi2022papers.jpg)
+![width:1100px](images/diagrams/class-learning-curve.png)
 
 </div>
 
 ---
+
+## Contents of this class make use of the scikit-learn library
+
+![width:850px](https://scikit-learn.org/stable/_static/ml_map.png)
 
 <!-- _footer:  [www.scikit-learn.org](https://scikit-learn.org/stable/) -->
 
-## Class organization
+---
 
-<div style="flex-basis: 40%;">
+## Contents of this class make use of the scikit-learn library
 
-__Lectures (8h)__
-Motivations, definitions, supervised, unsupervised, and deep learning.
-
-__Notebooks (20h)__
-Exercises and examples on various topics of Earth science.
-
-__Final hackathon (4h)__
-Solve a problem with machine learning.
-
-</div>
-<div style="flex-basis: 57%;">
-
-![](https://scikit-learn.org/stable/_static/ml_map.png)
-
-</div>
+<iframe src="https://scikit-learn.org" width="1280px" height="500px" style="border: none; box-shadow: 0px 0px 20px #ccc; border-radius: 10px; margin-bottom: -20px;"></iframe>
 
 ---
 
-## Class learning curve
+## Lots of resources are also taken from the _Deep learning_ book
 
-![](images/diagrams/class-learning-curve.png)
+
+<div style="flex-basis: 40%;">
+
+- Very complete introduction 
+- Historical aspects
+- Starts from scratch (linear algebra)
+- Covers machine/deep learning
+- Illustrates with examples
+- Online free access
+
+</div>
+<div style="flex-basis: 50%;">
+
+![drop-shadow width:350px](https://m.media-amazon.com/images/I/A1GbblX7rOL._AC_UF1000,1000_QL80_.jpg)
+
+</div>
+
+
+<!-- _footer: www.deeplearningbook.org -->
 
 ---
 
@@ -115,9 +140,31 @@ __Machine learning__ for Earth science: why, what, and how? Are any of those met
 
 ---
 
-## Ingredients for image captioning: hierarchical knowledge
+## How do we extract such high-level knowledge from data?
 
-![width:550px](images/deep-learning-book/figure-1-2.png)
+<div>
+
+### Recipe of image captioning
+- Identify objects within image
+- Recognize objects category
+- Understand the link between objects
+- Sort links by priority
+- Generate text out of it
+
+</div>
+<div>
+
+![width:600px](images/papers/karpathy2015motivation.png)
+
+</div>
+
+<!-- _footer: Karpathy & Fei-Fei (2015) -->
+
+---
+
+## Ingredients: hierarchical knowledge extraction
+
+![width:600px](images/deep-learning-book/figure-1-2.png)
 
 <!-- _footer: Goodfellow et al. (2016) -->
 
@@ -154,7 +201,7 @@ Most humans can pinpoint events.
 <div style="flex-basis: 42%;" align=center>
 
 Most humans can pinpoint events.
-Experts can classify them.
+Experts can __classify__ them.
 
 </div>
 <div style="flex-basis: 50%;">
@@ -235,51 +282,39 @@ __All three elements are required.__
 
 ## The data, the model, and the loss
 
-<div style="flex-basis: 25%;background-color: var(--color-sable); border-radius: 40px; padding: 30px;" align=center>
+<div style="flex-basis: 25%;background-color: var(--color-sable); border-radius: 40px; padding: 20px;" align=center data-marpit-fragment="0">
 
 🙊
-__the data__ 
+__The data__ 
 
-A set of samples and labels to train from 
+A set of samples $\mathbf{x}_i$ and labels $\mathbf{y}_i$ to learn from:
 
 $$\mathcal{D} = \{(\mathbf{x}_i, \mathbf{y}_i)\}_{i=1}^N$$
 
-ere $\mathbf{x}_i$ is the input and $\mathbf{y}_i$ is the output. wh
-
 </div>
-<div style="flex-basis: 25%;background-color: var(--color-sable); border-radius: 40px; padding: 30px;" align=center>
+<div style="flex-basis: 25%;background-color: var(--color-sable); border-radius: 40px; padding: 20px;" align=center  data-marpit-fragment="0"
 
 🙉 
 __the model__ 
 
-A function $f_\theta$ that maps data $\mathbf{x}$ to a prediction $\hat{\mathbf{y}}$ 
+A parametric function $f_\theta$ that maps data $\mathbf{x}$ to  $\hat{\mathbf{y}}$ 
 
 $$f_\theta : \mathbf{x} \mapsto \hat{\mathbf{y}}$$
 
-where $\theta$ denotes the parameters.
-
 </div>
-<div style="flex-basis: 25%;background-color: var(--color-sable); border-radius: 40px; padding: 30px;" align=center>
+<div style="flex-basis: 25%;background-color: var(--color-sable); border-radius: 40px; padding: 20px;" align=center  data-marpit-fragment="0"
 
 🙈 
 __the loss__
 
-is a functional that measures the error
+A measurement of the  model performance
 
-$$\mathcal{L}(f_\theta(\mathbf{x}), \mathbf{y})$$
-
-it allows to evaluate the model's performance.
+$$\mathcal{L}(\hat{\mathbf{y}}, \mathbf{y})$$
 
 </div>
+<div align=center  data-marpit-fragment="0"
 
----
-
-## Another more formal definition of learning
-
-
-<div align="center">
-
-Find the optimal parameters $\theta^*$ that minimizes the loss $\mathcal{L}$
+`Learning` = find the optimal parameters $\theta^*$ that minimizes the loss $\mathcal{L}$
 
 $$\theta^* = \arg\min_\theta \mathcal{L}\Big(f_\theta(\mathbf{x}), \mathbf{y}\Big)$$
 
@@ -289,7 +324,7 @@ $$\theta^* = \arg\min_\theta \mathcal{L}\Big(f_\theta(\mathbf{x}), \mathbf{y}\Bi
 
 ## Useful vocabulary and symbols
 
-<div style="flex-basis: 40%;" align="center">
+<div style="flex-basis: 40%;" align="center" data-marpit-fragment="0">
 
 | Symbol | Name |
 |:-|:-|
@@ -304,9 +339,9 @@ $$\theta^* = \arg\min_\theta \mathcal{L}\Big(f_\theta(\mathbf{x}), \mathbf{y}\Bi
 |$\mathbb{Y}$| Label space|
 
 </div>
-<div style="flex-basis: 40%;">
+<div style="flex-basis: 40%;" data-marpit-fragment="0">
 
-__For instance__, an image is a sample $x$ with 
+For instance, an image is a sample $x$ with 
 
 $$x \in \mathbb{X} = \mathbb{R}^{H \times W \times C}$$
 
@@ -346,13 +381,13 @@ Learns a policy to maximize the reward (game playing, robotics).
 
 </div>
 
-<!-- _footer: illustration from www.mathworks.com -->
+<!-- _footer: from [mathworks.com](https://nl.mathworks.com/discovery/reinforcement-learning.html) -->
 
 ---
 
 <!-- _class: titlepage-->
 
-# 3. Supervised machine learning
+# 3. Supervised machine learning: regression
 
 How to solve a regression or classification task with machine learning?
 
@@ -453,9 +488,9 @@ __How do we minimize the loss?__
 
 Grid search to find $\theta^*$ among gridded values of $\theta$. 
 
-__Pros__: easy to implement, exhaustive search, uncertainty estimation.
+- Pros: easy to implement, exhaustive search, uncertainty estimation.
 
-__Cons__: unscalable. If 0.1s / evaluation, then 2 parameters with 100 values each takes 1/2 hour. 
+- Cons: unscalable. If 0.1s / evaluation, then 2 parameters with 100 values each takes 1/2 hour. 
 For 5 parameters it takes more than 30 years!
 
 __Any smarter idea?__
@@ -476,9 +511,9 @@ __Any smarter idea?__
 
 Random search to find $\theta^*$. 
 
-__Pros__: easy to implement, scalable, uncertainty estimation, can include prior knowledge.
+- Pros: easy to implement, scalable, uncertainty estimation, can include prior knowledge.
 
-__Cons__: not exhaustive, can be slow to converge.
+- Cons: not exhaustive, can be slow to converge.
 
 </div>
 <div style="flex-basis: 30%" align=center>
@@ -495,9 +530,9 @@ __Cons__: not exhaustive, can be slow to converge.
 
 Estimate the gradient of $\mathcal{L}$ w.r.t. the parameters $\theta$, update the parameters towards gradient descent.
 
-__Pros__: converges faster than random search.
+- Pros: converges faster than random search.
 
-__Cons__: gets stuck in local minima, slow to converge, needs for differentiability.
+- Cons: gets stuck in local minima, slow to converge, needs for differentiability.
 
 </div>
 <div style="flex-basis: 30%" align=center>
@@ -519,8 +554,10 @@ __Recipe__
 1. Update the model $\theta \leftarrow \theta - \eta \nabla \mathcal{L}(\theta)$
 1. Repeat until convergence
 
-The __learning rate__ $\eta$ controls the update.
-A __training epoch__ is the number of iterations.
+__Hyperparameters__
+
+- The __learning rate__ $\eta$ controls the update.
+- An __epoch__ is the number of iteration.
 
 
 </div>
@@ -538,7 +575,7 @@ A __training epoch__ is the number of iterations.
 
 ![width:900px](images/supervised/learning_rate.svg)
 
-That's part of the __hyperparameters__ tuning.
+That's part of the __hyperparameters tuning__.
 More about that in the deep learning lectures.
 
 </div>
@@ -563,7 +600,8 @@ Having a loss close to 0 does not mean that the model __generalizes__ well.
 
 ![width:900px](images/supervised/splitting.svg)
 
-By splitting the dataset into a __training__ and a __testing__ set, we can evaluate the model's performance on unseen data. __You need stationary data.__
+By splitting the dataset into a __training__ and a __testing__ set, 
+we evaluate the performance on unseen (but __similar__) data. 
 
 </div>
 
@@ -587,10 +625,11 @@ The regularization penalizes the model's complexity.
 
 <div style="flex-basis: 40%">
 
-Because of combination of models, losses, and regularizations.
-[Scikit-learn.org](https://scikit-learn.org/stable/) provides a unified interface in a `greybox style`.
+Because of combination of models, losses, and regularizations. The [scikit-learn.org](https://scikit-learn.org/stable/) website provides a unified interface in a `greybox style`.
 
-__The model selection is made by trial and error, or by experience.__
+<br>
+
+The model selection is made by experience or __trial and error__.
 
 </div>
 <div style="flex-basis: 46%" align=center>
@@ -636,6 +675,16 @@ How do you addess this regression problem? More after the deep learning lectures
 
 ---
 
+<!-- _class: titlepage-->
+
+# 3. Supervised machine learning: classification
+
+How to solve a regression or classification task with machine learning?
+
+[<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:10px; margin-right: -20px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
+
+---
+
 ## The two main tasks of supervised machine learning
 
 <div align=center style="opacity: 0.3;">
@@ -657,7 +706,7 @@ $x$ is continuous and $y$ is descrete
 
 ---
 
-<!-- _footer: scikit-learn.org -->
+<!-- _footer: https://scikit-learn.org -->
 
 ## The classification task
 
@@ -690,7 +739,7 @@ __Performance__: how should we measure the performance of a classifier?
 
 ---
 
-<!-- _footer: Wikipedia on Support Vector Machines -->
+<!-- _footer: https://en.wikipedia.org/wiki/Support_vector_machine -->
 
 ## The classification task with support vector machines (SVM)
 
@@ -720,7 +769,7 @@ The decision function $f(\mathbf{x})$ dependson  the sign of the linear combinat
 
 $$f(\mathbf{x}) = \mathbf{w} \cdot \mathbf{x} + b$$
 
-The quantity to minimize is the __hinge loss__:
+The quantity to minimize is the __Hinge loss__:
 
 $$\mathcal{L}(\mathbf{w}, b) = \frac{1}{N} \sum_{i=1}^N \max\left(0, 1 - y_i \left(\mathbf{w} \cdot \mathbf{x}_i + b\right)\right)$$
 
@@ -764,13 +813,12 @@ __What about non linear problems?__
 
 <div align=center>
 
-The kernel trick allows to map the data to a higher dimensional space made from the input features, e.g., $\phi(\mathbf{x}) = (x_1, x_2, x_1^2 + x_2^2)$, where the problem is linearly separable. 
+The kernel trick allows to map the data to a __higher dimensional__ space
+made from the input features where the problem is __linearly separable__. 
 
-![width:650px](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*mCwnu5kXot6buL7jeIafqQ.png)
+![width:700px](https://miro.medium.com/v2/resize:fit:1400/format:webp/1*mCwnu5kXot6buL7jeIafqQ.png)
 
-For instance, the Radial Basis Function (RBF) kernel is infinite:
-
-$$K(\mathbf{x}, \mathbf{x}') = \exp\left(-\frac{\|\mathbf{x} - \mathbf{x}'\|^2}{2\sigma^2}\right)$$
+The __Radial Basis Functions__ (RBF) is an infinite kernel $K(\mathbf{x}, \mathbf{x}') = \exp\left(-\frac{\|\mathbf{x} - \mathbf{x}'\|^2}{2\sigma^2}\right)$
 
 </div>
 
@@ -780,19 +828,18 @@ $$K(\mathbf{x}, \mathbf{x}') = \exp\left(-\frac{\|\mathbf{x} - \mathbf{x}'\|^2}{
 
 <div align=center>
 
-The SVC is a generalization of the SVM that takes into account more than two classes.
-
+The SVC is a generalization of the SVM that digests more than two classes.
 
 ![width:1000px](images/supervised/svc_multiclass.svg)
 
-The decition function is linear in the kernel space only. 
+The decision function is linear in the kernel space only. 
 We can project it back to the data space to inspect it.
 
 </div>
 
 ---
 
-## Various classifcation metrics: the confusion matrix
+## Various classifcation metrics from the confusion matrix
 
 <div align=center style="flex-basis: 100%;">
 
@@ -812,10 +859,28 @@ We can project it back to the data space to inspect it.
 
 ![width:900px](https://www.researchgate.net/publication/336402347/figure/fig3/AS:812472659349505@1570719985505/Calculation-of-Precision-Recall-and-Accuracy-in-the-confusion-matrix_W640.jpg)
 
+<!-- _footer: Ma et al. (2019) -->
 
 ---
 
 ## Decision trees and random forests
+
+<div style="flex-basis: 10%;">
+
+__Decision trees__ are a set of rules that learns to predict the category.
+
+__Random forests__ are an ensemble of decision trees that vote for the category.
+
+__These algorithms are extremely powerful.__
+
+</div>
+<div>
+
+![width:900px](https://scikit-learn.org/stable/_images/sphx_glr_plot_iris_dtc_002.png)
+
+</div>
+
+<!-- _footer: from [scikit-learn.org](https://scikit-learn.org/stable/auto_examples/tree/plot_iris_dtc.html) -->
 
 ---
 
@@ -825,7 +890,7 @@ We can project it back to the data space to inspect it.
 
 ![width:700px](images/deep-learning-book/figure-1-1.png)
 
-There is no need for a complex model if you have a good representation of the data.
+There is no need for a complex model if you have a good __representation__ of the data.
 
 </div>
 
@@ -838,7 +903,7 @@ There is no need for a complex model if you have a good representation of the da
 
 We can engineer features from the raw data to improve the model's performance. 
 
-We can also __learn__ the features from the data.
+We can also __learn the features__ from the data.
 
 </div>
 <div style="flex-basis: 59%;">
@@ -851,7 +916,7 @@ We can also __learn__ the features from the data.
 
 <!-- _footer: still from Valentine & Trampert (2012) -->
 
-## Why natural data representations are hard to learn from?
+## Why would waveforms not be the best representation of ground motion?
 
 <div style="text-align: center">
 
@@ -871,15 +936,19 @@ __Lots of dimensions, but few data.__
 
 ---
 
-## Also, images may not be the best representation of data
+## Actually, natural data spaces may be often not fully occupied
 
 <div>
 
-Random reshuffling of the pixels of a face. What is the likelihood that the reshuffled image is a face?
+Random sampling of the pixels of a face. What is the likelihood that the reshuffled image _is_ a face?
 
 <br>
 
 ![](images/deep-learning-book/figure-x-x-1.jpg)
+
+<br>
+
+Like waveforms, __images are living on a manifold.__
 
 </div>
 <div>
@@ -892,11 +961,11 @@ Random reshuffling of the pixels of a face. What is the likelihood that the resh
 
 ---
 
-## Representation matters
+## Therefore, we need to find or learn the representation of the data
 
 <div>
 
-__The exclusive OR problem (XOR)__ is a simple problem not linearly separable, hard to learn using traditional machine learning algorithms. Multi-layer perceptrons can.
+__The exclusive OR problem__ (XOR) is a simple problem not linearly separable, hard to learn using traditional machine learning algorithms. Multi-layer perceptrons can.
 
 </div>
 
@@ -911,7 +980,7 @@ __The exclusive OR problem (XOR)__ is a simple problem not linearly separable, h
 
 ## Supervised learning for sismo-volcanic signal classification
 
-<div>
+<div align=center>
 
 __Supervised learning__ experiences a set of examples containing features $\mathbf{x}_i \in \mathbb{X}$ associated with labels $\mathbf{y} \in \mathbb{Y}$ to be predicted from the features (here, classification).
 
@@ -919,22 +988,23 @@ __Supervised learning__ experiences a set of examples containing features $\math
 
 </div>
 
-<!-- _footer: from Malfante et al. (2018) -->
+<!-- _footer: Malfante et al. (2018) -->
 
 
 ---
 
 ## Supervised learning for sismo-volcanic signal classification
 
-<div>
+<div align=center>
 
-In this case, $\mathbf{x}$ lies in $\mathbb{R}^{3 \times N}$, and $\mathbf{y}$ in $[0, \ldots, 5]$. Which __representation__ of $\mathbf{x}$ works best?
+In this case, $\mathbf{x}$ lies in $\mathbb{R}^{3 \times N}$, and $\mathbf{y}$ in $[0, \ldots, 5]$. 
+Which __representation__ of $\mathbf{x}$ works best?
 
 <img src="images/examples/malfante_2018.png" width=900/>
 
 </div>
 
-<!-- _footer: from Malfante et al. (2018) -->
+<!-- _footer: Malfante et al. (2018) -->
 
 
 ---
@@ -944,6 +1014,7 @@ In this case, $\mathbf{x}$ lies in $\mathbb{R}^{3 \times N}$, and $\mathbf{y}$ i
 <div style="flex-basis: 40%; margin-right: 40px;" align=center>
 
 We need to find relevant descriptors of our data, used as features $\mathbf{x}$.
+<br>
 
 <img src="images/examples/features_signal.png" width=500/>
 
@@ -954,15 +1025,16 @@ We need to find relevant descriptors of our data, used as features $\mathbf{x}$.
 
 </div>
 
-<!-- _footer: Jasperson et al. (2022) and Malfante et al. (2018) -->
+<!-- _footer: Jasperson et al. (2022) -->
 
 ---
 
-## Performance measure
+## Performance measure, and what can we learn from it?
 
 <div style="text-align: center">
 
 Accuracy of the predictions measures the model's performance (= confusion matrix)
+<br>
 
 <img src="images/examples/malfante_accuracy.png" width=800/>
 
@@ -978,7 +1050,7 @@ What is the guarantee that the features we choose are the best ones?
 
 <!-- _class: titlepage-->
 
-# 4. Deep learning
+# 4. Deep learning: multi-layer perceptrons
 
 How deep learning works? What is a neural network? How to train it, and what for?
 
@@ -1104,7 +1176,7 @@ $$
 
 ---
 
-## Quick example for solving XOR
+## Quick example for solving the XOR problem
 
 <div style="flex-basis: 39%;" align=center>
 
@@ -1217,7 +1289,7 @@ __Plateau__ are flat regions of the loss function where the gradient is zero. Th
 
 ## Gradient-descent tricks to avoid issue
 
-- __Learning rate__: seyt up, and maybe adapt.
+- __Learning rate__: set up, and maybe adapt it. 
 - __Momentum__: use the gradient of the previous iteration to update the parameters.
 - __Normalization__: normalize the inputs of each layer.
 - __Stochastic gradient descent__: use a mini-batch of samples to compute the gradient.
@@ -1281,30 +1353,6 @@ $$
 $$
 
 where $\mu_i$ is the mean of the input, $\sigma_i$ is the standard deviation of the input, and $\epsilon$ is a small constant to avoid division by zero. You can also apply the normalization after the activation function.
-
-</div>
-
----
-
-## Gradient descent and learning rate
-
-<div>
-
-The __learning rate__ is a hyperparameter that controls the size of the update of the parameters:
-
-$$
-\theta \leftarrow \theta - \eta \cfrac{\partial \mathcal L}{\partial \theta}
-$$
-
-We must look for a learning rate to avoid local minima while still converging fast enough, without diverging.
-
-> We can also __adapt__ the learning rate.
-
-</div>
-
-<div style="flex-basis: 45%;">
-
-<img src="images/models/lr.png" width="100%">
 
 </div>
 
@@ -1452,7 +1500,7 @@ $$
 
 ## A fully connected network for slving the MNIST classification
 
-<!-- _footer: LeCun et _al._ (1998) -->
+<!-- _footer: LeCun et al. (1998) -->
 
 <div style="flex-basis: 10%; text-align: center;">
 
@@ -1530,25 +1578,11 @@ Example applications:
 
 <!-- _class: titlepage-->
 
-<div  style="flex-basis: 20%;">
-<img src="https://lottiefolder.com/wp-content/uploads/2022/11/globe-lottie-animation-5-1.gif" style="margin:20px; width: 400px"/>
+# 5. Deep learning: convolutional neural networks
 
-</div>
-<div style="flex-basis: 40%; margin-right: 100px;">
+How deep learning works? What is a neural network? How to train it, and what for?
 
-# 5. Convolutional neural networks
-
-What is the problem with fully connected networks? How can we improve them?
-
-<p style="color: white !important">
-
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
-
-`leonard.seydoux/machine-learning-courses`
-
-</p>
-
-</div>
+[<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:10px; margin-right: -20px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
 
 ---
 
@@ -1715,25 +1749,11 @@ Here are the __filters from the first layer__ of VGG16 after training on 100k+ i
 
 <!-- _class: titlepage-->
 
-<div  style="flex-basis: 20%;">
-<img src="https://lottiefolder.com/wp-content/uploads/2022/11/globe-lottie-animation-5-1.gif" style="margin:20px; width: 400px"/>
-
-</div>
-<div style="flex-basis: 40%; margin-right: 100px;">
-
 # 6. Applications
 
 The illustration of the previous concepts with examples from seismology. And then you will be ready to apply these concepts to your own problems!
 
-<p style="color: white !important">
-
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
-
-`leonard.seydoux/machine-learning-courses`
-
-</p>
-
-</div>
+[<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:10px; margin-right: -20px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
 
 ---
 
@@ -1758,7 +1778,7 @@ The illustration of the previous concepts with examples from seismology. And the
 
 ## Earthquake detection and location with ConvNetQuake
 
-<div style="flex-basis: 40%;">
+<div style="flex-basis: 40%;" align=center>
 
 __Features__: 3-comp. waveform $x \in \mathbb{R}^{N \times 3}$
 __Target__: prob. of event in cell $1$ to $6$
@@ -1766,7 +1786,7 @@ __Loss__: cross-entropy with regularization $\mathcal{L} = - \sum_c q_c \log p_c
 
 <br>
 
-<img src="images/models/perol_2.png" height=300/>
+<img src="images/models/perol_2.png" height=250/>
 
 </div>
 <div style="flex-basis: 40%;">
@@ -1786,7 +1806,7 @@ __Loss__: cross-entropy with regularization $\mathcal{L} = - \sum_c q_c \log p_c
 __Features__: 3-component seismic signal $x \in \mathbb{R}^{3000 \times 3}$
 __Targets__: probabilities $p_i(x)$ of $P$, $S$, and $N$oise over time $= y \in \mathbb{R}^{3000 \times 3}$
 
-<img src="images/models/beroza_example.png" height=500px/>
+<img src="images/models/beroza_example.png" height=400px/>
 
 </div>
 
@@ -1802,7 +1822,7 @@ __Features__: 3-component seismic signal $x \in \mathbb{R}^{3000 \times 3}$
 __Targets__: probabilities $p_i(x)$ of $P$, $S$, and $N$oise over time $= y \in \mathbb{R}^{3000 \times 3}$
 __Loss__: cross-entropy $\mathcal{L} = -\sum_i\sum_x p(x)\log(q(x))$
 
-<img src="images/models/unet_phasnet.jpg" width=80%/>
+<img src="images/models/unet_phasnet.jpg" width=70%/>
 
 </div>
 
@@ -1842,97 +1862,66 @@ __Predictions__: likelihood $q_i(x)$ of $P$, $S$, and $N$oise over time
 
 <!-- _class: titlepage-->
 
-<div  style="flex-basis: 20%;">
-<img src="https://lottiefolder.com/wp-content/uploads/2022/11/globe-lottie-animation-5-1.gif" style="margin:20px; width: 400px"/>
-
-</div>
-<div style="flex-basis: 40%; margin-right: 100px;">
-
 # 7. Other aspects
 
 Fine tuning, data augmentation, and more.
 
-<p style="color: white !important">
-
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
-
-`leonard.seydoux/machine-learning-courses`
-
-</p>
-
-</div>
+[<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:10px; margin-right: -20px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
 
 ---
 
 ## Transfer learning and fine-tuning
 
-<div style="flex-basis: 50%;">
+<div style="flex-basis: 40%;">
 
-__Transfer learning__ is the use of a pre-trained model on a new task as a initial point for training a new model.
+__Transfer learning__ is the use of a pre-trained model $f_\alpha = f_{\theta^*}$ on a new task as a initial point for training a new model $f_\alpha \rightarrow f_{\alpha^*}$.
 
 __Fine-tuning__ is the partial re-training of a pre-trained model on a new task, while keeping the weights of the pre-trained layers fixed.
 
 </div>
-<div style="flex-basis: 40%;">
+<div style="flex-basis: 55%;">
 
-<img src="images/examples/scedc_mapplot.png" width=60%/>
-<img src="images/examples/iquique_mapplot.png" width=80%/>
+<img src="images/examples/scedc_mapplot.png"/>
 
 </div>
 
 ---
 
-## Deep-learning libraries
+## Deep-learning libraries in Julia and Python
 
-<div style="flex-basis: 30%;">
+<div style="flex-basis: 25%;">
 
-__Warning__: libraries are constantly evolving, and the documentation is often incomplete.
+### Warning
+
+Libraries are constantly evolving, and the documentation is often incomplete.
 
 </div>
 <div style="flex-basis: 50%; columns:2;">
 
 <img src="images/examples/logo_sklearn.png" width=200/>
 <br>
-<img src="images/examples/logo_tf2.png" width=250/>
+<img src="images/examples/logo_tf2.png" width=300/>
 <br>
 <img src="images/examples/logo_keras.png" width=250/>
 <br>
 <img src="images/examples/logo_pytorch.png" width=250/>
 <br>
-<img src="images/examples/logo_julia.png" width=200/>
+<img src="images/examples/logo_julia.png" width=150/>
 <br>
 <img src="images/examples/logo_seisbench.svg" width=400/>
 
 </div>
 
----
-
-<div>
-
-__Deep Learning__ book by Goodfellow, Bengio, and Courville.
-
-- History of machine learning
-- Linear algebra
-- Probability
-- Optimization
-- Deep learning
-
-</div>
-<div>
-
-![drop-shadow](images/references/deep_learning_cover.png)
-
-</div>
 
 ---
 
-## References
+## Dive into the scikit-learn toolbox documentation
 
 <!-- _footer: Online documentation at [scikit-learn.org](https://scikit-learn.org/stable) -->
 
-<div style="flex-basis: 40%;">
+<div style="flex-basis: 30%;">
 
-__The Scikit-Learn Python Toolbox documentation.__
+### Scikit-Learn toolbox documentation
 
 - Machine learning in Python
 - Online examples
@@ -1940,65 +1929,53 @@ __The Scikit-Learn Python Toolbox documentation.__
 - Grey-box models
 
 </div>
-<div style="flex-basis: 27%;">
+<div style="flex-basis: 50%;">
 
-<iframe src="https://scikit-learn.org/stable/" width="400px" height="520px" style="border: none; box-shadow: 0px 0px 20px #ccc; border-radius: 5px;"></iframe>
+<iframe src="https://scikit-learn.org/stable/" width="700px" height="520px" style="border: none; box-shadow: 0px 0px 20px #ccc; border-radius: 5px;zoom:1"></iframe>
 
 </div>
 
 ---
 
-## Online tools
+## Learning visually with the TensorFlow playground
 
 <div>
 
-<iframe src="https://playground.tensorflow.org/" width="1280px" height="800px" style="zoom: 1; border: none; margin-top: -250px !important;"></iframe>
+<iframe src="https://playground.tensorflow.org/" width="1280px" height="849px" style="zoom: 1; border: none; top: -130px; left: 0px; position: absolute; z-index: -10;"></iframe>
 
 </div>
 
-<!-- _footer: Available at https://playground.tensorflow.org -->
+<!-- _footer: https://playground.tensorflow.org -->
 
 ---
 
-## References
+## Interesting online projects
 
 <div>
 
-<iframe src="https://quickdraw.withgoogle.com/data" width="1280px" height="560px" style="zoom: 1; border: none; margin-top: -47px !important;"></iframe>
+<iframe src="https://quickdraw.withgoogle.com/data" width="1280px" height="650px" style="zoom: 1; border: none; margin-top: -130px !important;"></iframe>
 
 </div>
 
-<!-- _footer: Available at https://quickdraw.withgoogle.com/data -->
+<!-- _footer: https://quickdraw.withgoogle.com/data -->
 
 ---
 
 <!-- _class: titlepage-->
 
-<div  style="flex-basis: 20%;">
-<img src="https://lottiefolder.com/wp-content/uploads/2022/11/globe-lottie-animation-5-1.gif" style="margin:20px; width: 400px"/>
-
-</div>
-<div style="flex-basis: 40%; margin-right: 100px;">
 
 # 8. Notebooks
 
 Now we can move to the notebooks!
 
-<p style="color: white !important">
-
-<img src="images/titlepages/logo-github.svg" width=25 align="left" style="margin-top:5px; margin-right: -10px;"/>
-
-`leonard.seydoux/machine-learning-courses`
-
-</p>
-
-</div>
 
 ---
 
-### 1. Basics, data inspection, preprocessing, and regression
+## __Notebook 1:__ Calibrate a turbidity sensor to estimate the suspended load
 
-<div>
+
+
+<div style="flex-basis: 20%;">
 
 #### Problem
 
@@ -2008,78 +1985,96 @@ River water suspended load prediction from turbidity.
 
 Machine learning, data inspection, preprocessing, regression.
 
-</div>
+<img src="images/logo/logo-obsera.png" width=150 style="display:inline;"/>
 
-![bg right](images/lab_1.png)
+</div>
+<div>
+
+![width:750px](images/notebooks/lab_1_sensor_calibration.svg) 
+
+
+</div>
 
 ---
 
-### 2. Iris classification
+## __Notebook 2:__ Iris classification
 
-<div>
+<div style="flex-basis: 20%;">
 
-#### Problem
+### Problem
 
 Retrieve flower species from sepal and petal measurements.
 
-#### Objectives
+### Objectives
 
 Machine learning, normalization, classification, cross-validation.
 
 </div>
+<div style="flex-basis: 50%; margin-right:-100px;">
 
-![bg right:60%](https://camo.githubusercontent.com/6d84afeae253d05e4d8fcffc84ddeb47f65acee0e8448f38ac28e1ac82f49e56/68747470733a2f2f6269736877616d69747472612e6769746875622e696f2f696d616765732f696d6c692f697269735f646174617365742e706e67)
+![width:950px](https://camo.githubusercontent.com/6d84afeae253d05e4d8fcffc84ddeb47f65acee0e8448f38ac28e1ac82f49e56/68747470733a2f2f6269736877616d69747472612e6769746875622e696f2f696d616765732f696d6c692f697269735f646174617365742e706e67)
+
+</div>
 
 ---
 
-### 3. Lidar point cloud classification
+## __Notebook 3:__ Lidar point cloud classification
 
 <div>
 
-#### Problem
+### Problem
 
 Automate the identification of objects in a lidar cloud from labeled subset.
 
-#### Objectives
+### Objectives
 
 Supervised learning, classification, non-linear models, multi-scale features.
 
 </div>
-
-![bg right](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTomIqR3vtw9M5K2TyhvAtLKsSb8gGOGmxQcn0lHdoWO4uGjl3MxQ00TJgi2pvO7jRq2rs&usqp=CAU)
-
----
-
-### 4. MNIST classification
-
 <div>
 
-#### Problem
-
-Handwritten digit classification.
-
-#### Objectives
-
-Supervised learning, classification, multi-layer perceptron, convolutional neural network.
-
-![bg right 85%](https://www.researchgate.net/publication/306056875/figure/fig1/AS:393921575309346@1470929630835/Example-images-from-the-MNIST-dataset.png)
+![width:700px](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTomIqR3vtw9M5K2TyhvAtLKsSb8gGOGmxQcn0lHdoWO4uGjl3MxQ00TJgi2pvO7jRq2rs&usqp=CAU)
 
 </div>
 
 ---
 
-### 5. Earthquake detection
+## __Notebook 4:__ MNIST classification
 
 <div>
 
-#### Problem
+### Problem
+
+Handwritten digit classification.
+
+### Objectives
+
+Supervised learning, classification, multi-layer perceptron, convolutional neural network.
+
+</div>
+
+![width:500px](https://www.researchgate.net/publication/306056875/figure/fig1/AS:393921575309346@1470929630835/Example-images-from-the-MNIST-dataset.png)
+
+</div>
+
+---
+
+## __Notebook 5:__ Earthquake detection
+
+<div style="flex-basis: 25%;">
+
+### Problem
 
 Picking of seismic waves from continuous recordings, retrain a pre-trained model to adapt to new data.
 
-#### Objectives
+### Objectives
 
 Transfer learning, fine-tuning, convolutional neural network.
 
-![bg right 90%](https://d3i71xaburhd42.cloudfront.net/5ae0f6a3b5fc882ce0b05ff1e8f333caf2e0549e/6-Figure4-1.png)
+</div>
+<div>
+
+![](https://d3i71xaburhd42.cloudfront.net/5ae0f6a3b5fc882ce0b05ff1e8f333caf2e0549e/6-Figure4-1.png)
+
 
 </div>

@@ -3,22 +3,22 @@
 @import 'default';
 
 :root {
+    --font: Helvetica;
+    --font-code: Cascadia Code; 
     --color-lava: #ef3b37;
     --color-ocre: #f35639;
     --color-magma: #da291c;
     --color-rubis: #8a1538;
     --color-sable: #f7f3ef;
     --color-graphite: #48424d;
+    --color-graphite-accent: #5a555e;
     --color-terra: #dca67a;
     --color-blueschist: #84bdde;
     --color-olivine: #7aa585;
-    --color-h1: var(--color-graphite);
-    --color-h2: var(--color-graphite);
-    --color-footer: #bbbbbb;
+    --color-footer: rgb(179, 179, 179);
     --color-link: var(--color-magma);
     --color-math: var(--color-olivine);
-    --font: Helvetica;
-    --font-code: Cascadia Code; 
+    --color-code-link: var(--color-blueschist);
 }
 
 h1,
@@ -37,21 +37,22 @@ label {
     font-family: var(--font);
 }
 
+
 h1 {
-    color: var(--color-h1);
+    color: var(--color-graphite);
 }
 
 h2 {
-    color: var(--color-h2);
-    position: fixed;
-    width: 1280px;
-    top: 0px;
-    left: 0px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-    background-color: var(--color-sable);
     font-weight: normal;
     text-align: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 1280px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+    color: var(--color-graphite);
+    background-color: var(--color-sable);
 }
 
 h1 strong,
@@ -63,30 +64,27 @@ h4 strong {
 }
 
 section::after,
-footer {
-    font-size: 15pt;
-    color: var(--color-footer);
-}
-
+footer, 
 footer a{
-    text-decoration: none;
+    font-size: 17pt;
     color: var(--color-footer);
+    text-decoration: none;
 }
 
 a {
-    color: var(--color-link);
     font-family: inherit;
     font-size: 100%;
+    color: var(--color-link);
     text-decoration-line: underline;
     text-decoration-style: solid;
     text-decoration-color: var(--color-link);
-    text-decoration-thickness: 2px;
-    text-underline-offset: 7px;
+    text-decoration-thickness: 2.5px;
+    text-underline-offset: 9px;
 }
 
 a:has(code){
     vertical-align: top;
-    color: var(--color-blueschist);
+    color: var(--color-code-link);
     text-decoration: none;
 }
 
@@ -103,7 +101,6 @@ a:has(code) > code{
     font-size: 120%;
     display: inline;
 }
-
 
 section {
     padding: 60px;
@@ -122,14 +119,12 @@ section div {
     flex-basis: 40%;
 }
 
-
 img {
     display: block;
     margin: auto;
     background-color: transparent;
     max-height: 550px;
 }
-
 
 .logo {
     background-image: url("https://s3.glicid.fr/nuts/workshop-banner.svg");
