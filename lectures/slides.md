@@ -1498,7 +1498,7 @@ $$
 
 ---
 
-## A fully connected network for slving the MNIST classification
+## A fully connected network for solving the MNIST classification
 
 <!-- _footer: LeCun et al. (1998) -->
 
@@ -1509,6 +1509,15 @@ Handwritten digits set of grayscale images $x \in \mathbb{R}^{28 \times 28}$ and
 __Goal__: predict the number encoded in the pixels.
 
 </div>
+
+---
+
+<!-- _class: dark -->
+<!-- _footer: Harley (2015) -->
+
+## A fully connected network for solving the MNIST classification
+
+<iframe src="https://adamharley.com/nn_vis/mlp/3d.html" width="1280" height="630" frameborder="0" allowfullscreen style="position:fixed;bottom:0;zoom:100%;"></iframe>
 
 ---
 
@@ -1747,6 +1756,15 @@ Here are the __filters from the first layer__ of VGG16 after training on 100k+ i
 
 ---
 
+<!-- _class: dark -->
+<!-- _footer: Harley (2015) -->
+
+## A convolutional network for solving the MNIST classification
+
+<iframe src="https://adamharley.com/nn_vis/cnn/3d.html" width="1280" height="630" frameborder="0" allowfullscreen style="position:fixed;bottom:0;zoom:100%;"></iframe>
+
+---
+
 <!-- _class: titlepage-->
 
 # 6. Applications
@@ -1860,16 +1878,6 @@ __Predictions__: likelihood $q_i(x)$ of $P$, $S$, and $N$oise over time
 
 ---
 
-<!-- _class: titlepage-->
-
-# 7. Other aspects
-
-Fine tuning, data augmentation, and more.
-
-[<img src="images/logo/logo-github.svg" width=25 align="left" style="margin-top:10px; margin-right: -20px;"/> `leonard-seydoux/earth-data-science`](https://github.com/leonard-seydoux/earth-data-science)
-
----
-
 ## Transfer learning and fine-tuning
 
 <div style="flex-basis: 40%;">
@@ -1961,12 +1969,78 @@ Libraries are constantly evolving, and the documentation is often incomplete.
 
 ---
 
+<!-- _class: titlepage -->
+
+# 7. Unsupervised learning
+
+
+---
+
+## Main types of machine learning
+
+<div style="flex-basis: 25%; font-size:smaller;" align=center>
+
+![width:265px](images/diagrams/mathworks-supervised.png)
+
+Predict some output $\mathbf{y}$ from input $\mathbf{x}$ (regression, classification).
+
+</div>
+<div style="flex-basis: 25%; font-size: smaller" align=center>
+
+![width:250px](images/diagrams/mathworks-unsupervised.png)
+
+Learn data distribution $p(\mathbf{x})$ or structure (clustering, reduction).
+
+</div>
+<div style="flex-basis: 25%; font-size:smaller; opacity: 0.5">
+
+![width:265px](images/diagrams/mathworks-reinforcement.png)
+
+Learns a policy to maximize the reward (game playing, robotics).
+
+</div>
+
+<!-- _footer: from [mathworks.com](https://nl.mathworks.com/discovery/reinforcement-learning.html) -->
+
+
+---
+
+## Contents of this class make use of the scikit-learn library
+
+![width:850px](https://scikit-learn.org/stable/_static/ml_map.png)
+
+<!-- _footer:  [www.scikit-learn.org](https://scikit-learn.org/stable/) -->
+
+---
+
+<!-- _footer: from [researchgate.net](https://www.researchgate.net/publication/351953193_Supervised_and_unsupervised_machine_learning_a_Schematic_representation_of_an_artificial_neural_network) -->
+
+## Unsupervised learning
+
+<div style="flex-basis: 40%;">
+
+__Unsupervised learning__ is the task of learning the structure of the data samples $x$ without labels.
+
+- __Clustering__: group similar data points together.
+
+- __Dimensionality reduction__: reduce the dimensionality of the data.
+
+</div>
+<div style="flex-basis: 50%;">
+
+<img src="https://www.researchgate.net/publication/351953193/figure/fig3/AS:11431281117150742@1675395484096/Supervised-and-unsupervised-machine-learning-a-Schematic-representation-of-an.png" width=80%/>
+
+</div>
+
+---
+
 <!-- _class: titlepage-->
 
 
 # 8. Notebooks
 
 Now we can move to the notebooks!
+
 
 
 ---

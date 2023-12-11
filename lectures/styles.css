@@ -182,6 +182,11 @@ section.titlepage::after {
     color: transparent;
 }
 
+section.dark h2{
+    background-color: black;
+    color:var(--color-sable)
+}
+
 pre,
 code {
     font-family: var(--font-code);
