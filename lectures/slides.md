@@ -1973,7 +1973,6 @@ Libraries are constantly evolving, and the documentation is often incomplete.
 
 # 7. Unsupervised learning
 
-
 ---
 
 ## Main types of machine learning
@@ -2002,7 +2001,6 @@ Learns a policy to maximize the reward (game playing, robotics).
 
 <!-- _footer: from [mathworks.com](https://nl.mathworks.com/discovery/reinforcement-learning.html) -->
 
-
 ---
 
 ## Contents of this class make use of the scikit-learn library
@@ -2015,20 +2013,287 @@ Learns a policy to maximize the reward (game playing, robotics).
 
 <!-- _footer: from [researchgate.net](https://www.researchgate.net/publication/351953193_Supervised_and_unsupervised_machine_learning_a_Schematic_representation_of_an_artificial_neural_network) -->
 
-## Unsupervised learning
+## Unsupervised learning: learning the structure of the data without labels
+
+<div align=center>
+
+__Clustering__
+
+<img src="images/unsupervised/clustering_scheme.png" width=68%/>
+
+Group similar data points together based on some similarity measure.
+
+</div>
+<div align=center>
+
+__Dimensionality reduction__
+
+<img src="images/unsupervised/reduction_scheme.png" width=80%/>
+
+Find a low-dimensional representation of the data.
+
+</div>
+
+--- 
+
+## Clustering – class-membership identification without labels
+
+![width:800px](images/unsupervised/cluster_comparison.svg)
+
+<!-- _footer: from [scikit-learn.org](https://scikit-learn.org/stable/auto_examples/cluster/plot_cluster_comparison.html) -->
+
+---
+
+## Definitions of clustering
 
 <div style="flex-basis: 40%;">
 
-__Unsupervised learning__ is the task of learning the structure of the data samples $x$ without labels.
-
-- __Clustering__: group similar data points together.
-
-- __Dimensionality reduction__: reduce the dimensionality of the data.
+![width:300px](images/unsupervised/blobs.svg)
 
 </div>
 <div style="flex-basis: 50%;">
 
-<img src="https://www.researchgate.net/publication/351953193/figure/fig3/AS:11431281117150742@1675395484096/Supervised-and-unsupervised-machine-learning-a-Schematic-representation-of-an.png" width=80%/>
+Two main definitions of clustering:
+
+- Top-bottom: partition the heterogeneous data into __homogeneous__ subsets.
+
+- Bottom-up: group the data samples based on some criterion of __similarity__.
+
+`->` We need to provide a definition of __similarity__ or __homogeneity__.
+
+</div>
+
+---
+
+## Example of clustering with _k_-means
+
+<div style="flex-basis: 40%;">
+
+![width:300px](images/unsupervised/blobs_kmeans.svg)
+
+</div>
+<div style="flex-basis: 50%;">
+
+$k$-means is a clustering algorithm that partitions the data into $k$ clusters by minimizing the __inertia__:
+
+$$
+\arg\min_{\mathbf{C}} \sum_{i=1}^{k} \sum_{\mathbf{x}_j \in C_i} \|\mathbf{x}_j - \mu_i\|^2
+$$
+
+where $\mu_i$ is the centroid of cluster $C_i$.
+
+</div>
+
+--- 
+
+## Example of clustering with _k_-means
+
+<div style="flex-basis: 50%;">
+
+In practice, we need to provide the number of clusters $k$, and the algorithm will find the best partition:
+
+1. Initialize the centroids $\mu_i$ randomly.
+2. Assign each sample to the closest centroid.
+3. Update the centroids with the new samples.
+4. Repeat until convergence.
+
+</div>
+<div style="flex-basis: 40%;">
+
+![width:450px](https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/K-means_convergence.gif/617px-K-means_convergence.gif)
+
+</div>
+
+<!-- _footer: Wikipedia -->
+
+---
+
+## Example of clustering with spectral clustering
+
+<div style="flex-basis: 40%;">
+
+Spectral clustering uses the eigenvectors of the similarity matrix to find the clusters. 
+
+1. Compute the adjacency matrix.
+2. Compute the Laplacian matrix. 
+3. Get the first $m$ eigenvectors.
+4. Cluster the data using $k$-means.
+
+</div>
+<div style="flex-basis: 37%;">
+
+![](https://media.springernature.com/lw685/springer-static/image/art%3A10.1007%2Fs00332-022-09863-0/MediaObjects/332_2022_9863_Figa_HTML.png?as=webp)
+
+</div>
+
+---
+
+<!-- _footer: from [researchgate.net](https://www.researchgate.net/publication/351953193_Supervised_and_unsupervised_machine_learning_a_Schematic_representation_of_an_artificial_neural_network) -->
+
+## Unsupervised learning: learning the structure of the data without labels
+
+<div align=center>
+
+__Clustering__
+
+<img src="images/unsupervised/clustering_scheme.png" width=68%/>
+
+Group similar data points together based on some similarity measure.
+
+</div>
+<div align=center>
+
+__Dimensionality reduction__
+
+<img src="images/unsupervised/reduction_scheme.png" width=80%/>
+
+Find a low-dimensional representation of the data.
+
+</div>
+
+---
+
+## Eigenvectors of a matrix
+
+<div style="flex-basis: 40%;">
+
+The eigenvectors of a matrix are obtained by solving the eigenvalue problem:
+
+$$
+\mathbf{A}\mathbf{x} = \lambda \mathbf{x}
+$$
+
+where $\mathbf{A}$ is a square matrix, $\mathbf{x}$ is the eigenvector, and $\lambda$ is the eigenvalue.
+
+</div>
+<div style="flex-basis: 37%;">
+
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/5/58/Eigenvalue_equation.svg/1200px-Eigenvalue_equation.svg.png)
+
+</div>
+
+---
+
+## Singular value decomposition
+
+<div style="flex-basis: 40%;" align=center>
+
+The singular value decomposition (SVD) of a matrix $\mathbf{A}$ is defined as:
+$$
+\mathbf{A} = \mathbf{U}\mathbf{\Sigma}\mathbf{V}^T
+$$
+where $\mathbf{U}$ and $\mathbf{V}$ are orthogonal matrices, and $\mathbf{\Sigma}$ is a diagonal matrix.
+![width:700px](https://www.askpython.com/wp-content/uploads/2020/11/SVD-1.jpg.webp)
+
+</div>
+
+---
+
+## Example of dimensionality reduction with principal component analysis
+
+<div style="flex-basis: 47%;">
+
+Principal component analysis (PCA) is a dimensionality reduction technique that uses eigendecomposition:
+
+1. Compute the data covariance matrix.
+2. Compute the eigenvectors.
+3. Project the data onto the eigenvectors.
+
+</div>
+<div style="flex-basis: 37%;">
+
+![](https://bookdown.org/andreabellavia/mixtures/images/pca2.png)
+
+</div>
+
+<!-- _footer: Wikipedia -->
+
+---
+
+## Example of dimensionality reduction with independent component analysis
+
+<div style="flex-basis: 47%;">
+
+Independent component analysis (ICA) is a dimensionality reduction technique that maximizes the independence of the components.
+
+</div>
+<div style="flex-basis: 50%;">
+
+![](https://scikit-learn.org/stable/_images/sphx_glr_plot_ica_vs_pca_001.png)
+
+</div>
+
+---
+
+## Principal vs. independent component analysis
+
+<div align=center>
+
+For blind source separation, ICA is preferred over PCA.
+
+![](https://scikit-learn.org/stable/_images/sphx_glr_plot_ica_blind_source_separation_001.png)
+
+</div>
+
+---
+
+## Kernel PCA, of course
+
+<div align=center>
+
+Kernel PCA is a non-linear dimensionality reduction technique that uses the kernel trick to project the data onto a higher-dimensional space.
+
+![width:1300px](https://scikit-learn.org/stable/_images/sphx_glr_plot_kernel_pca_002.png)
+
+</div>
+
+---
+
+## Deep unsupervised learning
+
+<div align=center>
+
+Deep neural networks can be used for unsupervised learning:
+__Autoencoders__: learn a low-dimensional representation of the data.
+__Generative adversarial networks__: learn a generative model of the data.
+
+![width:900px](https://fr.mathworks.com/discovery/autoencoder/_jcr_content/mainParsys/image.adapt.480.medium.svg/1665035671723.svg)
+
+</div>
+
+---
+
+## Autoencoders
+
+<div style="flex-basis: 40%;">
+
+Autoencoders are neural networks that learn a low-dimensional representation of the data. They are composed of an __encoder__ and a __decoder__.
+
+The input $\mathbf{x}$ is encoded into a latent representation $\mathbf{z}$, and decoded into $\mathbf{x}'$.
+
+The loss function is the difference between the input and the reconstruction: 
+
+$$
+\mathcal{L} = \|\mathbf{x} - \mathbf{x}'\|^2
+$$
+
+</div>
+<div style="flex-basis: 40%;">
+
+![](images/examples/valentine_ae.png)
+
+</div>
+
+---
+
+## Convolutional autoencoders
+
+<div align=center>
+
+Convolutional autoencoders use convolutional layers instead of fully connected layers.
+They are used for image denoising, compression, and quality assessment.
+
+![width:1000px](https://miro.medium.com/v2/resize:fit:1400/1*gzJAJDLDavH_W7Zv2M2J7w.png)
 
 </div>
 
@@ -2040,8 +2305,6 @@ __Unsupervised learning__ is the task of learning the structure of the data samp
 # 8. Notebooks
 
 Now we can move to the notebooks!
-
-
 
 ---
 

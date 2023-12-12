@@ -37,6 +37,39 @@ varied = datasets.make_blobs(
     n_samples=n_samples, cluster_std=[1.0, 2.5, 0.5], random_state=random_state
 )
 
+# Make a picture of the dataset without colors
+fig, ax = plt.subplots(figsize=(2, 2))
+ax.scatter(varied[0][:, 0], varied[0][:, 1], s=80, edgecolors="w")
+ax.set_xticks(())
+ax.set_yticks(())
+ax.set_axis_off()
+plt.savefig("blobs.svg")
+
+# Apply k-means
+fig, ax = plt.subplots(figsize=(2, 2))
+toy = cluster.KMeans(n_clusters=3, random_state=seed).fit(varied[0])
+# print(toy.labels_)
+ax.scatter(
+    varied[0][:, 0],
+    varied[0][:, 1],
+    s=80,
+    # c=toy.labels_,
+    edgecolors="w",
+    color=np.array(["C0", "C1", "C2"])[toy.labels_],
+)
+# Draw kmeans boundaries
+h = 0.02
+x_min, x_max = varied[0][:, 0].min() - 1, varied[0][:, 0].max() + 1
+y_min, y_max = varied[0][:, 1].min() - 1, varied[0][:, 1].max() + 1
+xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+Z = toy.predict(np.c_[xx.ravel(), yy.ravel()])
+Z = Z.reshape(xx.shape)
+ax.contour(xx, yy, Z, colors="k", linewidths=0.5)
+ax.set_xticks(())
+ax.set_yticks(())
+ax.set_axis_off()
+plt.savefig("blobs_kmeans.svg")
+
 # ============
 # Set up cluster parameters
 # ============
