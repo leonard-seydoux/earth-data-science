@@ -30,7 +30,7 @@ Lecture by Léonard Seydoux the master-level classes of the [institut de physiqu
 1. __Critisize__ the litterature
 1. __Train__ on real geoscience problems 
 
-![width:240px](https://cdn.icon-icons.com/icons2/2699/PNG/512/jupyter_logo_icon_169453.png)
+![width:250px](https://cdn.icon-icons.com/icons2/2699/PNG/512/jupyter_logo_icon_169453.png)
 
 </div>
 <div style="flex-basis: 40%;">
@@ -2415,3 +2415,4 @@ Transfer learning, fine-tuning, convolutional neural network.
 
 
 </div>
+
