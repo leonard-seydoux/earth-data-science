@@ -159,8 +159,8 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Remove mac specific files
-.DS_Store
+# Remove mac specific files within all directories
+**/.DS_Store
 
 # VSCode
 .vscode/
