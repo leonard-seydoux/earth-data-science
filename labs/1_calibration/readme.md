@@ -1,33 +1,12 @@
-# Session 1: First Steps with Data Preparation
+# River load sensor calibration with machine learning
 
-Welcome to the first session of our machine learning workshop for geophysicists! In this session, we will focus on understanding and preparing our data before diving into machine learning algorithms. Our hands-on exercise will involve calibrating a turbidity probe to best predict the suspended load in rivers.
+<img src="images/logo-obsera.png" style="margin:20px; height:80px;"/> <img src="images/logo-ipgp-upc.png" height=100 style="margin:20px; height:80px;"/>
 
-## Objectives
+![](./images/station-hydrologique-digue.jpeg)
+_Station hydrologique du site de la Digue, sur la rivière de Capesterre. © ObsEra_
 
-By the end of this session, you will be able to:
+Welcome to the first lab session of the Earth Data Science course. In this lab, we will focus on understanding and preparing our data before diving into machine learning algorithms. Our hands-on exercise will involve calibrating a turbidity probe to best predict the suspended load in rivers.
 
-- Investigate the basic statistical properties of the data
-- Assess the quality and quantity of the training data
-- Determine if the data is stationary
-- Identify relevant features for solving the task at hand
-- Understand the concept of overfitting and how to avoid it
+The original version of this notebook was made by Antoine Lucas on top of the study made by Amande Roque-Bernard with the help of Gregory Sainton. In order to know more about the scientific context, please refer to Roque-Bernard et al. ([2023](https://doi.org/10.5194/esurf-11-363-2023)) "Phenomenological model of suspended sediment transport in a small catchment", Earth Surf. Dynam., 11, 363–381. The dataset comes from the _OBServatoire de l’Eau et de l’éRosion aux Antilles_ ([ObsEra](https://www.ozcar-ri.org/fr/observatoire-obsera/)), an observatory located in Guadeloupe that gives us information on the erosion of this volcanic island in a few watersheds. With this notebook, you will learn how to prepare and clean a dataset.
 
-## Overview
-
-The success of a machine learning model heavily depends on the quality of the data and how well it has been prepared. In this session, we will cover the following topics:
-
-1. **Data exploration**: Get familiar with the data by visualizing it and calculating summary statistics. This will help you identify trends, patterns, and potential issues in the data.
-
-2. **Training data assessment**: Evaluate the amount and quality of the available training data. Determine if you have enough data points to train a reliable model and identify potential biases in the data.
-
-3. **Stationarity**: Check if the data is stationary, i.e., if its statistical properties, such as mean and variance, are constant over time. Non-stationary data can lead to unreliable model predictions, so we may need to apply transformations or other techniques to make the data stationary.
-
-4. **Feature selection**: Identify the most relevant features for predicting the suspended load in rivers. This may involve domain knowledge, correlation analysis, or other feature selection techniques.
-
-5. **Overfitting**: Understand the concept of overfitting and how it can affect the performance of your machine learning model. Learn techniques to prevent overfitting, such as cross-validation, regularization, or reducing model complexity.
-
-## Hands-on Exercise: Turbidity Probe Calibration
-
-In this exercise, we will apply the concepts learned in this session to a real-world problem: calibrating a turbidity probe to best predict the suspended load in rivers. We will walk through the steps of data exploration, assessment, and preparation to build a foundation for future sessions, where we will apply machine learning algorithms to this problem.
-
-Let's get started!
+The current notebook was edited in 2023 by Leonard Seydoux (seydoux@ipgp.fr) to be used in the course "Earth Data Science" at the [Institut de Physique du Globe de Paris](https://www.ipgp.fr/fr) (IPGP). If you have found a bug or have a suggestion, please feel free to contact me.
