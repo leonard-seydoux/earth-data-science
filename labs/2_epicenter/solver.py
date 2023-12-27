@@ -9,6 +9,35 @@ import numpy as np
 import obspy
 
 
+DEGREE_TO_KM = 111.19
+
+
+def random_coordinates(extent=[4, 6, 44, 46], shots=100):
+    """
+    Sample random coordinates in a given extent.
+
+    Parameters
+    ----------
+    extent : list
+        Extent of the domain in the form [min_longitude, max_longitude,
+        min_latitude, max_latitude]
+    shots : int
+        Number of random points to shoot.
+
+    Returns
+    -------
+    latitudes : numpy.ndarray
+        Array of latitudes.
+    longitudes : numpy.ndarray
+        Array of longitudes.
+    """
+    # Sample random points in the domain
+    longitudes = np.random.uniform(extent[0], extent[1], shots)
+    latitudes = np.random.uniform(extent[2], extent[3], shots)
+
+    return latitudes, longitudes
+
+
 def monte_carlo_gaussian(
     stream, uncertainty=20, wavespeed=3, shots=100, extent=[4, 6, 44, 46]
 ):
@@ -39,35 +68,37 @@ def monte_carlo_gaussian(
         Likelihood of each point.
     """
     # Sample random points in the domain
-    longitudes = np.random.uniform(extent[0], extent[1], shots)
-    latitudes = np.random.uniform(extent[2], extent[3], shots)
+    random_grid_test = random_coordinates(extent=extent, shots=shots)
 
     # Compute the expected travel time for each point
-    t_hat = []
-    for trace in stream:
-        lat = trace.stats.coordinates["latitude"]
-        lon = trace.stats.coordinates["longitude"]
+    predicted_travel_times = np.empty((len(stream), shots))
+    for index, trace in enumerate(stream):
+        # Get coordinates of the station
+        station_latitude = trace.stats.coordinates["latitude"]
+        station_longitude = trace.stats.coordinates["longitude"]
+
+        # Compute the distance between the station and the random points
         distance = obspy.geodetics.base.locations2degrees(
-            lat, lon, latitudes, longitudes
+            station_latitude,
+            station_longitude,
+            *random_grid_test,
         )
-        t_hat.append(distance * 111.19 / wavespeed)
+        predicted_travel_times[index] = distance * DEGREE_TO_KM / wavespeed
 
     # Turn into a numpy array
-    t_hat = np.array(t_hat)
+    predicted_travel_times = np.array(predicted_travel_times)
 
     # Get observed travel times
-    t_observed = np.array([trace.stats.onset for trace in stream])
+    observed_travel_times = np.array([trace.stats.onset for trace in stream])
 
     # Compute the likelihood
-    likelihood = np.exp(
-        -0.5
-        * np.sum((t_hat - t_observed[:, None]) ** 2 / uncertainty**2, axis=0)
-    )
+    error = np.abs(predicted_travel_times - observed_travel_times[:, None])
+    likelihoods = np.exp(-0.5 * np.sum(error**2 / uncertainty**2, axis=0))
 
     # Normalize the likelihood
-    likelihood /= np.max(likelihood)
+    likelihoods /= np.max(likelihoods)
 
-    return latitudes, longitudes, likelihood
+    return *random_grid_test, likelihoods
 
 
 def monte_carlo_laplacian(
@@ -104,24 +135,28 @@ def monte_carlo_laplacian(
     latitudes = np.random.uniform(extent[2], extent[3], shots)
 
     # Compute the expected travel time for each point
-    t_hat = []
+    predicted_travel_times = []
     for trace in stream:
         lat = trace.stats.coordinates["latitude"]
         lon = trace.stats.coordinates["longitude"]
         distance = obspy.geodetics.base.locations2degrees(
             lat, lon, latitudes, longitudes
         )
-        t_hat.append(distance * 111.19 / wavespeed)
+        predicted_travel_times.append(distance * DEGREE_TO_KM / wavespeed)
 
     # Turn into a numpy array
-    t_hat = np.array(t_hat)
+    predicted_travel_times = np.array(predicted_travel_times)
 
     # Get observed travel times
-    t_observed = np.array([trace.stats.onset for trace in stream])
+    observed_travel_times = np.array([trace.stats.onset for trace in stream])
 
     # Compute the likelihood
     likelihood = np.exp(
-        -np.sum(np.abs(t_hat - t_observed[:, None]) / uncertainty, axis=0)
+        -np.sum(
+            np.abs(predicted_travel_times - observed_travel_times[:, None])
+            / uncertainty,
+            axis=0,
+        )
     )
 
     # Normalize the likelihood
@@ -158,7 +193,9 @@ def basemap(extent=[4, 6, 44, 46], stream=None, event=None):
 
     # Add features
     ax.add_feature(cartopy.feature.OCEAN, color="0.9", zorder=10, alpha=0.5)
-    ax.add_feature(cartopy.feature.RIVERS, edgecolor="royalblue", zorder=10, alpha=0.5)
+    ax.add_feature(
+        cartopy.feature.RIVERS, edgecolor="royalblue", zorder=10, alpha=0.5
+    )
     ax.coastlines()
 
     # Set extent
@@ -180,10 +217,10 @@ def basemap(extent=[4, 6, 44, 46], stream=None, event=None):
             event.origins[0].latitude,
             "r*",
             mec="k",
-            ms=9,
+            ms=10,
         )
 
-    # Add labels        
+    # Add labels
     gl = ax.gridlines(draw_labels=True)
     gl.top_labels = False
     gl.right_labels = False
