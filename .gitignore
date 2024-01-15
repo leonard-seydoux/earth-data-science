@@ -165,8 +165,5 @@ cython_debug/
 # VSCode
 .vscode/
 
-# No pickle files
-*.pickle
-
 # Hide solution notebooks in every directory and subdirectory
 **/*_solution.ipynb
