@@ -12,6 +12,46 @@ import obspy
 DEGREE_TO_KM = 111.19
 
 
+def predict_travel_times(stream, latitudes, longitudes, wavespeed=3):
+    """
+    Compute the expected travel time for each point.
+
+    Parameters
+    ----------
+    stream : obspy.Stream
+        Stream containing the travel times.
+    longitudes : numpy.ndarray
+        Array of longitudes.
+    latitudes : numpy.ndarray
+        Array of latitudes.
+    wavespeed : float
+        Wavespeed in km/s.
+
+    Returns
+    -------
+    predicted_travel_times : numpy.ndarray
+        Array of predicted travel times.
+    """
+    # Make input arrays at least 1D
+    latitudes = np.atleast_1d(latitudes)
+    longitudes = np.atleast_1d(longitudes)
+
+    # Compute the expected travel time for each point
+    predicted_travel_times = []
+    for trace in stream:
+        lat = trace.stats.coordinates["latitude"]
+        lon = trace.stats.coordinates["longitude"]
+        distance = obspy.geodetics.base.locations2degrees(
+            lat, lon, latitudes, longitudes
+        )
+        predicted_travel_times.append(distance * DEGREE_TO_KM / wavespeed)
+
+    # Turn into a numpy array
+    predicted_travel_times = np.array(predicted_travel_times)
+
+    return predicted_travel_times.squeeze()
+
+
 def random_coordinates(extent=[4, 6, 44, 46], shots=100):
     """
     Sample random coordinates in a given extent.
@@ -70,23 +110,10 @@ def monte_carlo_gaussian(
     # Sample random points in the domain
     random_grid_test = random_coordinates(extent=extent, shots=shots)
 
-    # Compute the expected travel time for each point
-    predicted_travel_times = np.empty((len(stream), shots))
-    for index, trace in enumerate(stream):
-        # Get coordinates of the station
-        station_latitude = trace.stats.coordinates["latitude"]
-        station_longitude = trace.stats.coordinates["longitude"]
-
-        # Compute the distance between the station and the random points
-        distance = obspy.geodetics.base.locations2degrees(
-            station_latitude,
-            station_longitude,
-            *random_grid_test,
-        )
-        predicted_travel_times[index] = distance * DEGREE_TO_KM / wavespeed
-
-    # Turn into a numpy array
-    predicted_travel_times = np.array(predicted_travel_times)
+    # Compute the travel time for each point
+    predicted_travel_times = predict_travel_times(
+        stream, *random_grid_test, wavespeed=wavespeed
+    )
 
     # Get observed travel times
     observed_travel_times = np.array([trace.stats.onset for trace in stream])
