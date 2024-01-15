@@ -167,3 +167,6 @@ cython_debug/
 
 # No pickle files
 *.pickle
+
+# Hide solution notebooks in every directory
+**/*_solution.ipynb
