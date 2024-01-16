@@ -22,7 +22,7 @@ The following lines create a new environment called `earth-data-science` without
 conda create -n earth-data-science
 conda activate earth-data-science
 conda install -c conda-forge obspy
-conda install -c conda-forge numpy scipy matplotlib pandas jupyter scikit-learn cartopy ipywidgets
+conda install -c conda-forge numpy scipy matplotlib pandas jupyter scikit-learn cartopy ipywidgets rasterio
 ```
 
 Once this is done, you must select the kernel `earth-data-science` in Jupyter to run the notebooks. Please inform your instructor if you have any problem with this.
