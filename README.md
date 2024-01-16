@@ -12,17 +12,3 @@ The goal of this course is to introduce students to the basics of scientific com
 
 The course contains a 8-hour lecture followed by 20 hours of practical sessions made with Jupyter notebooks. The lecture notes are available in the `lectures` folder and the practicals in the `labs` folder. You can find an introductory README file in each folder.
 
-## Python environment
-
-The easiest way to run most notebooks of this course is to create a new Anaconda environment with the following set of commands. We decided not to go with an environment file to allow for more flexibility in Python versions.
-
-The following lines create a new environment called `earth-data-science` without any package installed. Then, we install the most constrained packages first (namely, `obspy`) which will install the latest compatible version of `python`, `numpy` and `scipy`. Finally, we install the rest of the packages.
-
-```bash
-conda create -n earth-data-science
-conda activate earth-data-science
-conda install -c conda-forge obspy
-conda install -c conda-forge numpy scipy matplotlib pandas jupyter scikit-learn cartopy ipywidgets rasterio
-```
-
-Once this is done, you must select the kernel `earth-data-science` in Jupyter to run the notebooks. Please inform your instructor if you have any problem with this.
