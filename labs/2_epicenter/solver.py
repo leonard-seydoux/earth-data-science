@@ -192,7 +192,7 @@ def monte_carlo_laplacian(
     return latitudes, longitudes, likelihood
 
 
-def basemap(extent=[4, 6, 44, 46], stream=None, event=None):
+def basemap(extent=[4, 6, 44, 46], stream=None, event=None, figsize=None):
     """
     Create a basemap of the region.
 
@@ -210,7 +210,7 @@ def basemap(extent=[4, 6, 44, 46], stream=None, event=None):
         Basemap of the region.
     """
     # Create a figure
-    fig = plt.figure()
+    fig = plt.figure(figsize=figsize)
 
     # Create a basemap
     ax = fig.add_subplot(111, projection=cartopy.crs.PlateCarree())
