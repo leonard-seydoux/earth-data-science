@@ -9,7 +9,7 @@ import numpy as np
 import obspy
 
 
-DEGREE_TO_KM = 111.19
+DEGREE_TO_KM = 6371.0 * 2 * np.pi / 360
 
 
 def predict_travel_times(stream, latitudes, longitudes, wavespeed=3):
@@ -41,10 +41,12 @@ def predict_travel_times(stream, latitudes, longitudes, wavespeed=3):
     for trace in stream:
         lat = trace.stats.coordinates["latitude"]
         lon = trace.stats.coordinates["longitude"]
-        distance = obspy.geodetics.base.locations2degrees(
+        great_circle_distance = obspy.geodetics.base.locations2degrees(
             lat, lon, latitudes, longitudes
         )
-        predicted_travel_times.append(distance * DEGREE_TO_KM / wavespeed)
+        predicted_travel_times.append(
+            great_circle_distance * DEGREE_TO_KM / wavespeed
+        )
 
     # Turn into a numpy array
     predicted_travel_times = np.array(predicted_travel_times)
