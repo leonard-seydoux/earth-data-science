@@ -123,7 +123,7 @@ def sample_indices(n_total: int, n_points: int) -> np.ndarray:
     return indices
 
 
-def plot_scene(points: np.ndarray, ax=None, n_points: int = 10000, **kwargs):
+def plot_scene(points: np.ndarray, ax=None, n_points: int = None, **kwargs):
     """Show a 3D scene with points.
 
     Parameters
