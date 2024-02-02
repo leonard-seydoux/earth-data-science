@@ -167,3 +167,6 @@ cython_debug/
 
 # Hide solution notebooks in every directory and subdirectory
 **/*_solution.ipynb
+
+# Forget about the exam directory
+exam/
