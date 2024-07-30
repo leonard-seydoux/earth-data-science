@@ -32,7 +32,7 @@ The following lines create a new environment called `earth-data-science` without
 conda create -n earth-data-science
 conda activate earth-data-science
 conda install -c conda-forge obspy
-conda install -c conda-forge numpy scipy matplotlib pandas jupyter scikit-learn cartopy ipywidgets rasterio 
+conda install -c conda-forge numpy scipy matplotlib pandas jupyter scikit-learn cartopy ipywidgets rasterio seaborn
 pip install tqdm 
 pip install laspy
 ```
