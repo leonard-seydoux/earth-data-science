@@ -2,7 +2,7 @@
 
 ![](./images/self-evaluation-python-panda.png)
 
-The original version of this notebook was made by Antoine Lucas and adapted by Leonard Seydoux in 2023 by Léonard Seydoux (seydoux@ipgp.fr) for the course _Earth Data Science_ at the [Institut de Physique du Globe de Paris](https://www.ipgp.fr/fr) (IPGP). If you have found a bug or have a suggestion, please feel free to contact me.
+The original version of this notebook was made by Antoine Lucas and adapted in 2023 by Léonard Seydoux (seydoux@ipgp.fr) for the course _Earth Data Science_ at the [Institut de Physique du Globe de Paris](https://www.ipgp.fr/fr) (IPGP). If you have found a bug or have a suggestion, please feel free to contact me.
 
 This notebook contains a series of questions to which you should answer. Some example cells are given in the notebook to help you. You should not modify these cells. You can add as many cells as you want to answer the questions. You can also add markdown cells to explain your approach. 
 
